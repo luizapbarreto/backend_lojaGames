@@ -1,6 +1,10 @@
 package com.loja.games.model;
 
 import java.util.List;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9d2aaf09418fd49b863e5ce81b475488569c20a7
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9d2aaf09418fd49b863e5ce81b475488569c20a7
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity

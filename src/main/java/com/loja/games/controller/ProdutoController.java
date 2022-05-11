@@ -1,7 +1,13 @@
 package com.loja.games.controller;
 
 import java.util.List;
+<<<<<<< HEAD
 import javax.validation.Valid;
+=======
+
+import javax.validation.Valid;
+
+>>>>>>> 9d2aaf09418fd49b863e5ce81b475488569c20a7
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

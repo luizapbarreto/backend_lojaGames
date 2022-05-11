@@ -1,7 +1,13 @@
 package com.loja.games.controller;
 
 import java.util.List;
+<<<<<<< HEAD
 import javax.validation.Valid;
+=======
+
+import javax.validation.Valid;
+
+>>>>>>> 9d2aaf09418fd49b863e5ce81b475488569c20a7
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +28,7 @@ import com.loja.games.repository.CategoriaRepository;
 
 @RestController
 @RequestMapping("/categoria")
+<<<<<<< HEAD
 @CrossOrigin(origins = "", allowedHeaders = "")
 public class CategoriaController {
 
@@ -63,5 +70,48 @@ public class CategoriaController {
 
         repository.deleteById(id);
     }
+=======
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+public class CategoriaController {
+	
+	@Autowired
+	private CategoriaRepository repository;
+	
+	@GetMapping
+	public ResponseEntity<List<Categoria>> getAll(){
+		return ResponseEntity.ok(repository.findAll());
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Categoria> getById(@PathVariable Long id){
+		return repository.findById(id).map(resposta -> ResponseEntity.ok(resposta)).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}
+	
+	@GetMapping("/categoria/{descricao}")
+	public ResponseEntity<List<Categoria>> getByDescricao(@PathVariable String descricao){
+		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(descricao));
+	}
+	
+	@PostMapping
+    public ResponseEntity<Categoria> post(@Valid @RequestBody Categoria categoria) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(categoria));
+    }
+	
+	@PutMapping
+	public ResponseEntity<Categoria> put(@Valid @RequestBody Categoria categoria) {
+		return repository.findById(categoria.getId()).map(resposta-> ResponseEntity.status(HttpStatus.OK).body(repository.save(categoria))).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}
+		
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Long id) {
+		java.util.Optional<Categoria> categoria = repository.findById(id);
+		
+		if(categoria.isEmpty())
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		
+		repository.deleteById(id);
+	}
+>>>>>>> 9d2aaf09418fd49b863e5ce81b475488569c20a7
 
 }
